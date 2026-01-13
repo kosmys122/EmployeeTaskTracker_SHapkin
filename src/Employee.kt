@@ -3,7 +3,7 @@ enum class Priority {
     MEDIUM,
     HIGH
 }
-class Employee {
+class Employee:ReportGenerator {
     private var fullName: String = ""
         //get()=fullName
     private var position: String = ""
@@ -44,6 +44,9 @@ class Employee {
     }
     fun Print_yearsOfExperience(){
         println(yearsOfExperience)
+    }
+    override fun generateReport(): String {
+        return "$fullName,$position,$salary,$yearsOfExperience"
     }
 }
 fun main() {
@@ -125,7 +128,10 @@ fun main() {
     devDep.printDepartmentGoal()
     testDep.printDepartmentGoal()
 
-
+    val reportGenerators: List<ReportGenerator> = listOf(employee,devDep)
+    reportGenerators.forEach { item->
+        println(item.generateReport())
+    }
 
 
 
@@ -152,9 +158,12 @@ abstract class Department{
     abstract val departmentName: String
     abstract fun printDepartmentGoal()
 }
-class DevelopmentDepartment(override val departmentName: String = "Отдел разработки"):Department(){
+class DevelopmentDepartment(override val departmentName: String = "Отдел разработки"):Department(),ReportGenerator{
     override fun printDepartmentGoal() {
         println("$departmentName должен писать чистый код")
+    }
+    override fun generateReport(): String {
+        return "${printDepartmentGoal()}"
     }
 }
 class TestingDepartment(override val departmentName: String = "Отдел тестирования"):Department(){
@@ -163,5 +172,5 @@ class TestingDepartment(override val departmentName: String = "Отдел тестировани
     }
 }
 interface ReportGenerator{
-
+    fun generateReport(): String
 }
