@@ -4,11 +4,12 @@ enum class Priority {
     HIGH
 }
 class Employee:ReportGenerator {
-    private var fullName: String = ""
+    var currentTask: Task? =null
+    private var fullName: String =""
         //get()=fullName
-    private var position: String = ""
+    private var position: String =""
         //get()=position
-    private var salary: Int = 0
+    private var salary: Int =0
         //get()=salary
         set(value){
             if (value<0){
@@ -47,6 +48,14 @@ class Employee:ReportGenerator {
     }
     override fun generateReport(): String {
         return "$fullName,$position,$salary,$yearsOfExperience"
+    }
+    fun assignTask(newTask: Task) {
+        if (currentTask!=null&&currentTask?.isCompleted==false) {
+            println("Сотрудник уже занят задачей ${currentTask?.title}")
+        } else {
+            currentTask=newTask
+            println("Задача назначена сотруднику")
+        }
     }
 }
 fun main() {
@@ -133,6 +142,24 @@ fun main() {
         println(item.generateReport())
     }
 
+    val task4 = Task(
+        title = "Разработать новый модуль авторизации",
+        description = "Реализовать OAuth 2.0 аутентификацию",
+        priority = Priority.HIGH
+    )
+    val task5 = Task(
+        title = "Исправить баг в платежной системе",
+        description = "Ошибка при обработке возвратов",
+        priority = Priority.HIGH
+    )
+    val task6 = Task(
+        title = "Обновить документацию API",
+        description = "Добавить новые endpoints в документацию",
+        priority = Priority.LOW
+    )
+    employee.assignTask(task4)
+    employee.assignTask(task5)
+    employee.assignTask(task6)
 
 
 
