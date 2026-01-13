@@ -1,3 +1,8 @@
+enum class Priority {
+    LOW,
+    MEDIUM,
+    HIGH
+}
 class Employee {
     private var fullName: String = ""
         //get()=fullName
@@ -77,3 +82,9 @@ fun main() {
     println("Full Name via getter: ${employee.Print_fullName()}")
     println("Salary via getter: ${employee.Print_salary()}")
 }
+data class Task(
+    val title: String,
+    val description: String,
+    val priority: Priority,
+    var isCompleted: Boolean = false
+)
