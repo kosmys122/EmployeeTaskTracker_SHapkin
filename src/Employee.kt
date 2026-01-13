@@ -144,3 +144,6 @@ data class Task(
     val priority: Priority,
     var isCompleted: Boolean = false
 )
+abstract class Department{
+
+}
