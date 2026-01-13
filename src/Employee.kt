@@ -81,6 +81,62 @@ fun main() {
     println("\n--- Checking getters ---")
     println("Full Name via getter: ${employee.Print_fullName()}")
     println("Salary via getter: ${employee.Print_salary()}")
+
+    val task1 = Task(
+        title = "Изучить Kotlin",
+        description = "Изучить основы языка Kotlin",
+        priority = Priority.HIGH
+    )
+
+    val task2 = Task(
+        title = "Изучить Kotlin",
+        description = "Изучить основы языка Kotlin",
+        priority = Priority.HIGH
+    )
+
+    val task3 = Task(
+        title = "Изучить Kotlin",
+        description = "Изучить основы языка Kotlin",
+        priority = Priority.MEDIUM
+    )
+
+    println("Task 1: $task1")
+    println("Task 2: $task2")
+    println("Task 3: $task3")
+
+    println("task1.toString() = \"${task1.toString()}\"")
+
+    println("task1.equals(task2): ${task1.equals(task2)}")
+    println("task1.equals(task3): ${task1.equals(task3)}")
+
+    println("Хэш-код task1: ${task1.hashCode()}")
+    println("Хэш-код task2: ${task2.hashCode()}")
+    println("Хэш-код task3: ${task3.hashCode()}")
+
+    println("task1.hashCode() == task2.hashCode(): ${task1.hashCode() == task2.hashCode()}")
+    println("task1.hashCode() == task3.hashCode(): ${task1.hashCode() == task3.hashCode()}")
+
+    val task1Copy = task1.copy(priority = Priority.LOW)
+    println("Копия task1 с изменением приоритета на LOW:")
+    println("task1Copy = $task1Copy")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 data class Task(
     val title: String,
