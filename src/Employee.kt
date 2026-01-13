@@ -162,3 +162,6 @@ class TestingDepartment(override val departmentName: String = "Отдел тестировани
         println("$departmentName обязаны находить все баги")
     }
 }
+interface ReportGenerator{
+
+}
