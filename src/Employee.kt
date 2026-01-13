@@ -120,6 +120,10 @@ fun main() {
     println("Копия task1 с изменением приоритета на LOW:")
     println("task1Copy = $task1Copy")
 
+    val devDep = DevelopmentDepartment()
+    val testDep = TestingDepartment()
+    devDep.printDepartmentGoal()
+    testDep.printDepartmentGoal()
 
 
 
@@ -145,5 +149,16 @@ data class Task(
     var isCompleted: Boolean = false
 )
 abstract class Department{
-
+    abstract val departmentName: String
+    abstract fun printDepartmentGoal()
+}
+class DevelopmentDepartment(override val departmentName: String = "Отдел разработки"):Department(){
+    override fun printDepartmentGoal() {
+        println("$departmentName должен писать чистый код")
+    }
+}
+class TestingDepartment(override val departmentName: String = "Отдел тестирования"):Department(){
+    override fun printDepartmentGoal() {
+        println("$departmentName обязаны находить все баги")
+    }
 }
